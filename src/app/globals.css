@@ -2,5 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
- /* body {
-  @apply ;} */
+body {
+  @apply bg-[#F8F8F8] text-[#121417];
+}

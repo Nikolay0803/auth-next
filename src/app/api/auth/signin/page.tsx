@@ -42,7 +42,7 @@ export default function SignIn() {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-      <div className="relative w-[566px] bg-white rounded-[30px] p-[64px]">
+      <div className="relative max-w-[566px] bg-white rounded-[30px] p-[64px]">
         <Link className="absolute top-4 right-4 w-8 h-8" href={"/"}>
           <Image src={close} alt="close" />
         </Link>

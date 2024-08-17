@@ -1,24 +1,35 @@
 "use client";
+
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import log from "@/assets/log-in-01.png";
+import SignOut from "./SignOut";
 
 const SignInButton = () => {
   const { data: session } = useSession();
-  console.log({ session });
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const handleSignOutClick = () => {
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
 
   if (session && session.user)
     return (
-      <div className="flex gap-4 ml-auto">
+      <div className="flex gap-4 ml-auto items-center">
         <p className="text-[#9FB7CE]">{session.user.name}</p>
-        <Link
-          href={"/api/auth/signout"}
+        <button
+          onClick={handleSignOutClick}
           className="flex gap-4 ml-auto text-[#F0AA8D]"
         >
           Sign Out
-        </Link>
+        </button>
+        <SignOut isVisible={isModalVisible} onClose={handleCloseModal} />
       </div>
     );
 

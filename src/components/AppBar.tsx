@@ -7,15 +7,18 @@ import logo from "@/assets/ukraine.png"
 
 const AppBar = () => {
   return (
-    <header className="flex items-center gap-10 mb-5 px-[128px] py-5">
-      <div className="flex gap-2 mr-[390px]">
+    <header className="flex items-center mb-5 px-[128px] py-5">
+      {/* Логотип і назва */}
+      <div className="flex-1 flex items-center justify-center">
         <div className="w-6 h-6">
           <Image src={logo} alt="logo" />
         </div>
-        <p className="text-[20px] font-medium">LearnLingo</p>
+        <p className="text-[20px] font-medium ml-2">LearnLingo</p>
       </div>
-      <div className="flex gap-[28px] font-medium">
-        <Link className="ransition-colors hover:text-[#9FB7CE]" href={"/"}>
+
+      {/* Навігаційні посилання */}
+      <nav className="flex-1 flex items-center justify-center gap-[28px] font-medium">
+        <Link className="transition-colors hover:text-[#9FB7CE]" href={"/"}>
           Home
         </Link>
         <Link
@@ -24,8 +27,12 @@ const AppBar = () => {
         >
           Teachers
         </Link>
+      </nav>
+
+      {/* Кнопка входу/реєстрації */}
+      <div className="flex-1 flex items-center justify-center">
+        <SignInButton />
       </div>
-      <SignInButton />
     </header>
   );
 };
