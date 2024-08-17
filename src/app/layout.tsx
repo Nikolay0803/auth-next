@@ -2,7 +2,6 @@
 import Providers from "@/components/Providers";
 import "./globals.css";
 import AppBar from "@/components/AppBar";
-import SignInButton from "@/components/SignInButton";
 
 export const metadata = {
   title: "Next-Auth",
@@ -20,7 +19,6 @@ export default function RootLayout(props: Props) {
         <Providers>
           <AppBar />
           {props.children}
-          <SignInButton />
         </Providers>
       </body>
     </html>

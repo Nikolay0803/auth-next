@@ -2,7 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-indigo-900;
-  display: flex;
-}
+ /* body {
+  @apply ;} */
