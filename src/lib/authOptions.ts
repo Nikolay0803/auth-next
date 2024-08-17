@@ -84,9 +84,9 @@ export const authOptions: AuthOptions = {
       return session;
     },
   },
-  // pages: {
-  //   signIn: "/api/auth/signin"
-  // },
+  pages: {
+    signIn: "/api/auth/signin"
+  },
 };
 
 const handler = NextAuth(authOptions);
