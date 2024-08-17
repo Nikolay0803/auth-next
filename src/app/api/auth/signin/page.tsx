@@ -35,6 +35,7 @@ export default function SignIn() {
           break;
       }
     } else if (result?.ok && result.url) {
+      console.log("Redirecting to:", result.url);
       router.push(result.url);
     }
   };
@@ -55,6 +56,7 @@ export default function SignIn() {
           className="p-2 flex flex-col gap-[18px] mb-10"
           onSubmit={handleSubmit}
         >
+          <span></span>
           <InputBox
             placeholder="Email"
             value={username}
