@@ -5,8 +5,7 @@ import Image from "next/image";
 import logo from "@/assets/ukraine.png"
 
 
-const AppBar = async () => {
-  // const session = await getServerSession(authOptions);
+const AppBar = () => {
   return (
     <header className="flex items-center gap-10 mb-5 px-[128px] py-5">
       <div className="flex gap-2 mr-[390px]">
@@ -27,13 +26,6 @@ const AppBar = async () => {
         </Link>
       </div>
       <SignInButton />
-
-      {/* <Link
-        className="text-white transition-colors hover:text-blue-500 mb-[400px]"
-        href={`/dashboard/user/${session?.user.id}`}
-      >
-        User Profile
-      </Link> */}
     </header>
   );
 };

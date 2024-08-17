@@ -26,13 +26,12 @@ export default function SignIn() {
     });
 
     if (result?.error) {
-      // Встановлюємо повідомлення про помилку
       switch (result.error) {
         case "CredentialsSignin":
-          setError("Неправильний логін або пароль");
+          setError("Wrong username or password");
           break;
         default:
-          setError("Сталася помилка при вході");
+          setError("Error occurred during sign-in");
           break;
       }
     } else if (result?.ok && result.url) {
