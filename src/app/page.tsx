@@ -1,5 +1,6 @@
 import Image from "next/image";
 import girl from "@/assets/block.png";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,9 +16,12 @@ export default function Home() {
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
           </p>
-          <button className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] rounded-xl">
+          <Link
+            className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] rounded-xl"
+            href={"/dashboard"}
+          >
             Get started
-          </button>
+          </Link>
         </div>
         <div>
           <Image src={girl} alt="girl" />
