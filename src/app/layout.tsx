@@ -2,6 +2,8 @@
 import Providers from "@/components/Providers";
 import "./globals.css";
 import AppBar from "@/components/AppBar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: "Next-Auth",
@@ -19,6 +21,7 @@ export default function RootLayout(props: Props) {
         <Providers>
           <AppBar />
           {props.children}
+          <ToastContainer />
         </Providers>
       </body>
     </html>

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import close from "@/assets/x.png";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 type FormInputs = {
   name: string;
@@ -38,18 +39,18 @@ const SignupPage = () => {
       });
 
       if (!res.ok) {
-        alert(res.statusText);
+        toast.error(`Error: ${res.statusText}`);
         return;
       }
 
       const response = await res.json();
-      alert("User Registered!");
+      toast.success("User registered!");
       console.log({ response });
 
       router.push("/api/auth/signin");
     } catch (error) {
       console.error("Error fetching data:", error);
-      alert("Failed to register. Please try again.");
+      toast.error("Failed to register. Please try again.");
     }
   };
 
@@ -86,12 +87,12 @@ const SignupPage = () => {
             required
             onChange={(e) => (data.current.password = e.target.value)}
           />
-            <button
-              className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] rounded-xl"
-              onClick={register}
-            >
-              Sign Up
-            </button>
+          <button
+            className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] rounded-xl"
+            onClick={register}
+          >
+            Sign Up
+          </button>
         </div>
       </div>
     </div>

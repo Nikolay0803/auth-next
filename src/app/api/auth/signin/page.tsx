@@ -7,6 +7,7 @@ import InputBox from "@/components/InputBox";
 import Link from "next/link";
 import Image from "next/image";
 import close from "@/assets/x.png";
+import { toast } from "react-toastify";
 
 export default function SignIn() {
   const [username, setUsername] = useState("");
@@ -29,13 +30,15 @@ export default function SignIn() {
       switch (result.error) {
         case "CredentialsSignin":
           setError("Wrong username or password");
+          toast.error("Wrong username or password");
           break;
         default:
           setError("Error occurred during sign-in");
+          toast.error("Error occurred during sign-in");
           break;
       }
     } else if (result?.ok && result.url) {
-      console.log("Redirecting to:", result.url);
+      toast.success("Successfully signed in!");
       router.push(result.url);
     }
   };
