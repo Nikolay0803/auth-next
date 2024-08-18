@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import log from "@/assets/log-in-01.png";
+import person from "@/assets/person.png";
 import SignOut from "./SignOut";
 
 const SignInButton = () => {
@@ -22,6 +23,9 @@ const SignInButton = () => {
   if (session && session.user)
     return (
       <div className="flex gap-4 ml-auto items-center">
+        <div className="w-6 h-6">
+          <Image src={person} alt="person" />
+        </div>
         <p className="text-[#9FB7CE]">{session.user.name}</p>
         <button
           onClick={handleSignOutClick}
