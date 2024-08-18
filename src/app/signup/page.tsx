@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import InputBox from "@/components/InputBox";
 import { Backend_URL } from "@/lib/Constants";
 import Image from "next/image";
@@ -17,29 +17,57 @@ type FormInputs = {
 
 const SignupPage = () => {
   const router = useRouter();
-
-  const data = useRef<FormInputs>({
+  const [formData, setFormData] = useState<FormInputs>({
     name: "",
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof FormInputs, string>>
+  >({});
 
-  const register = async () => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validateForm = (data: FormInputs) => {
+    const errors: Partial<Record<keyof FormInputs, string>> = {};
+
+    if (!data.name || data.name.length < 2) {
+      errors.name = "Name must be at least 2 characters";
+    }
+    if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      errors.email = "Invalid email format";
+    }
+    if (!data.password || data.password.length < 5) {
+      errors.password = "Password must be at least 6 characters";
+    }
+
+    return errors;
+  };
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const validationErrors = validateForm(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     try {
       const res = await fetch(Backend_URL + "/auth/register", {
         method: "POST",
-        body: JSON.stringify({
-          name: data.current.name,
-          email: data.current.email,
-          password: data.current.password,
-        }),
+        body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/json",
         },
       });
 
       if (!res.ok) {
-        toast.error(`Error: ${res.statusText}`);
+        const errorText = await res.text();
+        toast.error(`Error: ${errorText}`);
         return;
       }
 
@@ -66,34 +94,40 @@ const SignupPage = () => {
           need some information. Please provide us with the following
           information
         </p>
-        <div className="p-2 flex flex-col gap-[18px] mb-10">
+        <form
+          className="p-2 flex flex-col gap-[18px] mb-10"
+          onSubmit={onSubmit}
+        >
           <InputBox
             placeholder="Name"
             autoComplete="off"
             name="name"
-            required
-            onChange={(e) => (data.current.name = e.target.value)}
+            value={formData.name}
+            onChange={handleChange}
+            error={errors.name}
           />
           <InputBox
-            name="email"
             placeholder="Email"
-            required
-            onChange={(e) => (data.current.email = e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            error={errors.email}
           />
           <InputBox
-            name="password"
             placeholder="Password"
             type="password"
-            required
-            onChange={(e) => (data.current.password = e.target.value)}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            error={errors.password}
           />
           <button
+            type="submit"
             className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] rounded-xl"
-            onClick={register}
           >
             Sign Up
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

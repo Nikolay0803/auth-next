@@ -13,11 +13,24 @@ export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
   const router = useRouter();
+
+  const validateEmail = (email: string) => {
+    // Проста перевірка формату email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setEmailError(null);
+
+    if (!validateEmail(username)) {
+      setEmailError("Invalid email format");
+      return;
+    }
 
     const result = await signIn("credentials", {
       redirect: false,
@@ -50,11 +63,12 @@ export default function SignIn() {
           <Image src={close} alt="close" />
         </Link>
         <h1 className="text-[40px] font-medium mt-3 mb-5">Log In</h1>
-        <p className="text-[#8b8b8b] mb-10">
+        <p className="text-[#8b8b8b] mb-6">
           Welcome back! Please enter your credentials to access your account and
-          continue your search for an teacher.
+          continue your search for a teacher.
         </p>
         {error && <p className="text-red-500 mb-4">{error}</p>}
+        {emailError && <p className="text-red-500 mb-4">{emailError}</p>}
         <form
           className="p-2 flex flex-col gap-[18px] mb-10"
           onSubmit={handleSubmit}
@@ -64,6 +78,7 @@ export default function SignIn() {
             placeholder="Email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            // error={emailError}
           />
           <InputBox
             type="password"
