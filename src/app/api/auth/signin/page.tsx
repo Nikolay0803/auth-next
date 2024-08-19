@@ -17,7 +17,6 @@ export default function SignIn() {
   const router = useRouter();
 
   const validateEmail = (email: string) => {
-    // Проста перевірка формату email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
   };
