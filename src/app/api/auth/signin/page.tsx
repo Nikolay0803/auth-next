@@ -2,7 +2,6 @@
 
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-// import { useRouter } from "next/navigation";
 import InputBox from "@/components/InputBox";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,7 +13,6 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
-  // const router = useRouter();
 
   const validateEmail = (email: string) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -51,7 +49,6 @@ export default function SignIn() {
       }
     } else if (result?.ok && result.url) {
       toast.success("Successfully signed in!");
-      // router.push(result.url);
       window.location.href = result.url;
 
     }
@@ -79,7 +76,6 @@ export default function SignIn() {
             placeholder="Email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            // error={emailError}
           />
           <InputBox
             type="password"
