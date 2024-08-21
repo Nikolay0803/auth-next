@@ -42,16 +42,16 @@
 Setup and Running
 Running the Frontend:
 
-Install dependencies and start the development server:
-git clone <repository-url>
-add your .env
-npm i 
-npm run dev
-Running the Backend:
+###Install dependencies and start the development server:
+#git clone <repository-url>
+#add your .env
+#npm i 
+#npm run dev
+###Running the Backend:
 
-Install dependencies and start the development server:
-git clone <repository-url>
-add your .env
-npm i 
-npm run start:dev
+#Install dependencies and start the development server:
+#git clone <repository-url>
+#add your .env
+#npm i 
+#npm run start:dev
 
