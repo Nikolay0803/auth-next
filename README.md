@@ -28,6 +28,7 @@
 - **Home Page**:
   - Available to all users.
   - Provides main content and information about the application.
+  - (https://github.com/Nikolay0803/auth-next/blob/master/photos-app/reg-lin.png)
 
 - **Teachers Page**:
   - Restricted to authenticated users.
