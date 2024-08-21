@@ -26,5 +26,5 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "https://nest-production-c333.up.railway.app"
 }
