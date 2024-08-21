@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Learn Lingo
 
-## Getting Started
+**Learn Lingo** is an interactive language learning application that integrates user registration, authentication, and content access features. Developed with a Nest.js backend and a Next.js frontend, it offers a robust and user-friendly interface for language learning.
 
-First, run the development server:
+## Technology Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Backend
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Nest.js**: A scalable and maintainable backend framework with a modular architecture.
+- **JWT (JSON Web Tokens)**: Provides secure authentication with access and refresh tokens.
+- **Prisma ORM**: Simplifies database interactions, including data modeling and migrations.
+- **Swagger**: Automatically generates API documentation, making API testing and integration more straightforward.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Frontend
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Next.js**: Framework for server-side rendering (SSR) and static site generation (SSG) to ensure optimal performance and SEO.
+- **Next-auth**: Manages user authentication and session management, supporting multiple authentication providers and tokens.
+- **React**: A library for building user interfaces with a component-based approach.
+- **Tailwind CSS**: A utility-first CSS framework for creating responsive and visually appealing designs.
+- **React-toastify**: Displays real-time notifications for user interactions such as registration confirmations and error messages.
 
-## Learn More
+## Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **User Registration and Authentication**:
+  - Allows users to create accounts and log in using JWT tokens.
+  - Ensures secure password storage and session management.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Home Page**:
+  - Available to all users.
+  - Provides main content and information about the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Teachers Page**:
+  - Restricted to authenticated users.
+  - Features specialized information and resources accessible only after login.
 
-## Deploy on Vercel
+- **API Documentation**:
+  - Swagger facilitates automatic API documentation generation for easy verification and testing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Setup and Running
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+- **Running the Frontend**:
+  - git clone <repository-url>
+  - add your .env
+  - npm i 
+  - npm run dev
+ 
+- **Running the Frontend**:
+  - git clone <repository-url>
+  - add your .env
+  - npm i 
+  - npm run start:dev
+
+
+
+
