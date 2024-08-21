@@ -40,13 +40,13 @@
 
 
 - **Running the Frontend**:
-  - git clone <repository-url
+  - git clone <repository-url>
   - add your .env
   - npm i 
   - npm run dev
  
 - **Running the Frontend**:
-  - git clone <repository-url
+  - git clone <repository-url>
   - add your .env
   - npm i 
   - npm run start:dev
