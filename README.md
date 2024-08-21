@@ -24,15 +24,19 @@
 - **User Registration and Authentication**:
   - Allows users to create accounts and log in using JWT tokens.
   - Ensures secure password storage and session management.
+![User Registration and Authentication](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/reg-lin.png)
+![User Registration and Authentication](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/log-lin.png)
+  
 
 - **Home Page**:
   - Available to all users.
   - Provides main content and information about the application.
-  (https://github.com/Nikolay0803/auth-next/blob/master/photos-app/reg-lin.png)
+  ![Home Page](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/home-lin.png)
 
 - **Teachers Page**:
   - Restricted to authenticated users.
   - Features specialized information and resources accessible only after login.
+  ![Teachers Page](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/teach-lin.png)
 
 - **API Documentation**:
   - Swagger facilitates automatic API documentation generation for easy verification and testing.
