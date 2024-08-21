@@ -40,6 +40,7 @@
 
 - **API Documentation**:
   - Swagger facilitates automatic API documentation generation for easy verification and testing.
+  ![Teachers Page](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/swag-lin.png)
 
 ## Setup and Running
 
