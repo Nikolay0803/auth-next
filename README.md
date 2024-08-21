@@ -24,22 +24,18 @@
 - **User Registration and Authentication**:
   - Allows users to create accounts and log in using JWT tokens.
   - Ensures secure password storage and session management.
- <br/>
 ![User Registration and Authentication](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/reg-lin.png)
- <br/>
 ![User Registration and Authentication](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/log-lin.png)
   
 
 - **Home Page**:
   - Available to all users.
   - Provides main content and information about the application.
-  <br/>
   ![Home Page](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/home-lin.png)
 
 - **Teachers Page**:
   - Restricted to authenticated users.
   - Features specialized information and resources accessible only after login.
-<br/>
   ![Teachers Page](https://github.com/Nikolay0803/auth-next/blob/master/photos-app/teach-lin.png)
 
 - **API Documentation**:
