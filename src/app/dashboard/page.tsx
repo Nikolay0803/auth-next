@@ -1,13 +1,64 @@
+"use client"
+
 import React from "react";
 import book from "@/assets/book-open-01.png";
 import star from "@/assets/Star 2.png";
 import heart from "@/assets/Vector.png";
 import { teachers } from "@/lib/teachers-info-data";
 import Image from "next/image";
+import ListBox from "@/components/ListBox";
+
+
+
+ const languages = [
+   { key: "english", label: "English" },
+   { key: "french", label: "French" },
+   { key: "german", label: "German" },
+   { key: "ukrainian", label: "Ukrainian" },
+   { key: "polish", label: "Polish" },
+ ];
+ const level = [
+   { key: "A1", label: "A1 Beginner" },
+   { key: "A2", label: "A2 Elementary" },
+   { key: "B1", label: "B1 Intermediate" },
+   { key: "B2", label: "B2 Upper-Intermediate" },
+ ];
+ const price = [
+   { key: "10", label: "10$" },
+   { key: "20", label: "20$" },
+   { key: "30", label: "30$" },
+   { key: "40", label: "40$" },
+ ];
 
 const DashboardPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 pb-[60px] sm:px-6 lg:px-8">
+      <div className="flex gap-5 mb-8">
+        <ListBox
+          label="Languages"
+          placeholder="Languages"
+          options={languages}
+          className="w-[221px]"
+          // value={selectedAnimal}
+          // onChange={setSelectedAnimal}
+        />
+        <ListBox
+          label="Level of knowledge"
+          placeholder="Level"
+          options={level}
+          className="w-[198px]"
+          // value={selectedAnimal}
+          // onChange={setSelectedAnimal}
+        />
+        <ListBox
+          label="Price"
+          placeholder="Price"
+          options={price}
+          className="w-[124px]"
+          // value={selectedAnimal}
+          // onChange={setSelectedAnimal}
+        />
+      </div>
       {teachers.map((teacher, index) => (
         <div
           key={index}
