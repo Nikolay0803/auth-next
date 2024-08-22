@@ -1,9 +1,9 @@
-
 import Providers from "@/components/Providers";
 import "./globals.css";
 import AppBar from "@/components/AppBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Next-Auth",
@@ -17,11 +17,12 @@ interface Props {
 export default function RootLayout(props: Props) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Providers>
           <AppBar />
-          {props.children}
+          <main className="flex-grow">{props.children}</main>
           <ToastContainer />
+          <Footer />
         </Providers>
       </body>
     </html>
