@@ -40,7 +40,7 @@ const SignupPage = () => {
     if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
       errors.email = "Invalid email format";
     }
-    if (!data.password || data.password.length < 5) {
+    if (!data.password || data.password.length < 6) {
       errors.password = "Password must be at least 6 characters";
     }
 
@@ -83,13 +83,15 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-      <div className="relative max-w-[566px] bg-white rounded-[30px] p-[64px]">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-70 backdrop-blur-sm">
+      <div className="relative max-w-[566px] bg-white rounded-[30px] p-[64px] dark:bg-[#1F1F1F]">
         <Link className="absolute top-4 right-4 w-8 h-8" href={"/"}>
-          <Image src={close} alt="close" />
+          <Image src={close} alt="close" className="dark:invert" />
         </Link>
-        <h1 className="text-[40px] font-medium mt-3 mb-5">Registration</h1>
-        <p className="text-[#8b8b8b] mb-10">
+        <h1 className="text-[40px] font-medium mt-3 mb-5 text-gray-900 dark:text-gray-100">
+          Registration
+        </h1>
+        <p className="text-[#8b8b8b] dark:text-gray-400 mb-10">
           Thank you for your interest in our platform! In order to register, we
           need some information. Please provide us with the following
           information
@@ -123,7 +125,7 @@ const SignupPage = () => {
           />
           <button
             type="submit"
-            className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] rounded-xl"
+            className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] rounded-xl dark:bg-[#3B82F6] dark:text-white"
           >
             Sign Up
           </button>

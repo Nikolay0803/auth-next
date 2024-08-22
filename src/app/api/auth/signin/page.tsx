@@ -50,18 +50,17 @@ export default function SignIn() {
     } else if (result?.ok && result.url) {
       toast.success("Successfully signed in!");
       window.location.href = result.url;
-
     }
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-      <div className="relative max-w-[566px] bg-white rounded-[30px] p-[64px]">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-70 backdrop-blur-sm">
+      <div className="relative max-w-[566px] bg-white text-[#121417] dark:bg-[#1F1F1F] dark:text-white rounded-[30px] p-[64px]">
         <Link className="absolute top-4 right-4 w-8 h-8" href={"/"}>
-          <Image src={close} alt="close" />
+          <Image src={close} alt="close" className="dark:invert" />
         </Link>
         <h1 className="text-[40px] font-medium mt-3 mb-5">Log In</h1>
-        <p className="text-[#8b8b8b] mb-6">
+        <p className="text-[#8b8b8b] dark:text-[#9e9e9e] mb-6">
           Welcome back! Please enter your credentials to access your account and
           continue your search for a teacher.
         </p>
@@ -71,7 +70,6 @@ export default function SignIn() {
           className="p-2 flex flex-col gap-[18px] mb-10"
           onSubmit={handleSubmit}
         >
-          <span></span>
           <InputBox
             placeholder="Email"
             value={username}
@@ -85,7 +83,7 @@ export default function SignIn() {
           />
           <button
             type="submit"
-            className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] rounded-xl"
+            className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] text-[#121417] dark:bg-[#3B82F6] dark:text-white rounded-xl"
           >
             Sign In
           </button>

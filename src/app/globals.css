@@ -4,4 +4,5 @@
 
 body {
   @apply bg-[#F8F8F8] text-[#121417];
+  @apply dark:bg-[#1A1A1A] dark:text-[#E4E4E4];
 }

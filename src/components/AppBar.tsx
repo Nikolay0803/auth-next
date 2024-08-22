@@ -3,6 +3,7 @@ import React from "react";
 import SignInButton from "./SignInButton";
 import Image from "next/image";
 import logo from "@/assets/ukraine.png"
+import ThemeToggle from "./ThemeToggle";
 
 
 const AppBar = () => {
@@ -12,9 +13,8 @@ const AppBar = () => {
         <div className="w-6 h-6">
           <Image src={logo} alt="logo" />
         </div>
-          <p className="text-[20px] font-medium ml-2">LearnLingo</p>
-        </Link>
-
+        <p className="text-[20px] font-medium ml-2">LearnLingo</p>
+      </Link>
       <nav className="flex-1 flex items-center justify-center gap-[28px] font-medium">
         <Link className="transition-colors hover:text-[#9FB7CE]" href={"/"}>
           Home
@@ -28,6 +28,7 @@ const AppBar = () => {
       </nav>
 
       <div className="flex-1 flex items-center justify-center">
+        <ThemeToggle />
         <SignInButton />
       </div>
     </header>
