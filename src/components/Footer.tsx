@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/ukraine.png";
+import Logo from "@/assets/logo.svg?react";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
@@ -9,9 +8,7 @@ export default function Footer() {
     <footer className="flex flex-col md:flex-row items-center justify-between px-8 md:px-[128px] py-8 bg-[#3A5068] text-white dark:bg-[#1c2938] dark:text-gray-300">
       <div className="flex flex-col gap-3 items-center">
         <Link className="flex items-center" href="/">
-          <div className="w-8 h-8">
-            <Image src={logo} alt="LearnLingo Logo" />
-          </div>
+          <Logo />
           <p className="text-[20px] font-medium ml-2">LearnLingo</p>
         </Link>
         <p>&copy; 2024 Your Company Name. All rights reserved.</p>

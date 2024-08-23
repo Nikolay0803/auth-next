@@ -2,10 +2,9 @@
 
 import React, { useState } from "react";
 import InputBox from "@/components/InputBox";
-import { Backend_URL } from "@/lib/Constants";
-import Image from "next/image";
+import { Backend_URL } from "@/lib/Constants";;
 import Link from "next/link";
-import close from "@/assets/x.png";
+import Close from "@/assets/close.svg?react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -86,7 +85,7 @@ const SignupPage = () => {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-70 backdrop-blur-sm">
       <div className="relative max-w-[566px] bg-white rounded-[30px] p-[64px] dark:bg-[#1F1F1F]">
         <Link className="absolute top-4 right-4 w-8 h-8" href={"/"}>
-          <Image src={close} alt="close" className="dark:invert" />
+          <Close />
         </Link>
         <h1 className="text-[40px] font-medium mt-3 mb-5 text-gray-900 dark:text-gray-100">
           Registration

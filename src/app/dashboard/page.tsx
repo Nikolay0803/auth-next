@@ -1,36 +1,25 @@
-"use client"
+"use client";
 
-import React from "react";
-import book from "@/assets/book-open-01.png";
-import star from "@/assets/Star 2.png";
-import heart from "@/assets/Vector.png";
+import React, { useState } from "react";
 import { teachers } from "@/lib/teachers-info-data";
 import Image from "next/image";
 import ListBox from "@/components/ListBox";
+import Star from "@/assets/star.svg?react";
+import Book from "@/assets/book.svg?react";
+import Heart from "@/assets/heart.svg?react";
+import { languages, level, price } from "@/app/dashboard/user/teachers-data/teachers-data"; 
 
-
-
- const languages = [
-   { key: "english", label: "English" },
-   { key: "french", label: "French" },
-   { key: "german", label: "German" },
-   { key: "ukrainian", label: "Ukrainian" },
-   { key: "polish", label: "Polish" },
- ];
- const level = [
-   { key: "A1", label: "A1 Beginner" },
-   { key: "A2", label: "A2 Elementary" },
-   { key: "B1", label: "B1 Intermediate" },
-   { key: "B2", label: "B2 Upper-Intermediate" },
- ];
- const price = [
-   { key: "10", label: "10$" },
-   { key: "20", label: "20$" },
-   { key: "30", label: "30$" },
-   { key: "40", label: "40$" },
- ];
 
 const DashboardPage = () => {
+  const [favorites, setFavorites] = useState<Record<number, boolean>>({});
+
+  const handleFavorite = (index: number) => {
+    setFavorites((prevFavorites) => ({
+      ...prevFavorites,
+      [index]: !prevFavorites[index],
+    }));
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 pb-[60px] sm:px-6 lg:px-8">
       <div className="flex gap-5 mb-8">
@@ -39,24 +28,18 @@ const DashboardPage = () => {
           placeholder="Languages"
           options={languages}
           className="w-[221px]"
-          // value={selectedAnimal}
-          // onChange={setSelectedAnimal}
         />
         <ListBox
           label="Level of knowledge"
           placeholder="Level"
           options={level}
           className="w-[198px]"
-          // value={selectedAnimal}
-          // onChange={setSelectedAnimal}
         />
         <ListBox
           label="Price"
           placeholder="Price"
           options={price}
           className="w-[124px]"
-          // value={selectedAnimal}
-          // onChange={setSelectedAnimal}
         />
       </div>
       {teachers.map((teacher, index) => (
@@ -72,9 +55,7 @@ const DashboardPage = () => {
               <p className="text-[#8A8A89] dark:text-[#CCCCCC]">Languages</p>
               <ul className="flex gap-4 font-medium whitespace-nowrap">
                 <li className="flex items-center gap-2 border-r border-gray-300 dark:border-gray-600">
-                  <div className="w-4 h-4">
-                    <Image src={book} alt="book" />
-                  </div>
+                  <Book />
                   <p className="pr-4 dark:text-[#E4E4E4]">Lessons online</p>
                 </li>
                 <li className="flex items-center gap-2 border-r border-gray-300 dark:border-gray-600">
@@ -83,9 +64,7 @@ const DashboardPage = () => {
                   </p>
                 </li>
                 <li className="flex items-center gap-2 border-r border-gray-300 dark:border-gray-600">
-                  <div className="w-4 h-4">
-                    <Image src={star} alt="star" />
-                  </div>
+                  <Star className="w-5 h-5 fill-[#FFC531]" />
                   <p className="pr-4 dark:text-[#E4E4E4]">
                     Rating: {teacher.rating}
                   </p>
@@ -97,8 +76,17 @@ const DashboardPage = () => {
                   </p>
                 </li>
               </ul>
-              <button className="h-[26px] w-[26px]">
-                <Image src={heart} alt="heart" />
+              <button
+                onClick={() => handleFavorite(index)}
+                className="h-[26px] w-[26px]"
+              >
+                <Heart
+                  className={`${
+                    favorites[index]
+                      ? "fill-[#F0AA8D] dark:fill-[#d63737]"
+                      : "fill-none"
+                  }`}
+                />
               </button>
             </div>
             <h2 className="text-2xl font-medium mb-8 text-[#121417] dark:text-[#E4E4E4]">

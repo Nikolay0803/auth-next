@@ -5,6 +5,12 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: "class",
-  theme: {},
+  theme: {
+    extend: {
+      zIndex: {
+        "60": "60",
+      },
+    },
+  },
   plugins: [],
 };

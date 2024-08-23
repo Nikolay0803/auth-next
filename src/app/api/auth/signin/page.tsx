@@ -4,8 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import InputBox from "@/components/InputBox";
 import Link from "next/link";
-import Image from "next/image";
-import close from "@/assets/x.png";
+import Close from "@/assets/close.svg?react";
 import { toast } from "react-toastify";
 
 export default function SignIn() {
@@ -57,7 +56,7 @@ export default function SignIn() {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-70 backdrop-blur-sm">
       <div className="relative max-w-[566px] bg-white text-[#121417] dark:bg-[#1F1F1F] dark:text-white rounded-[30px] p-[64px]">
         <Link className="absolute top-4 right-4 w-8 h-8" href={"/"}>
-          <Image src={close} alt="close" className="dark:invert" />
+          <Close />
         </Link>
         <h1 className="text-[40px] font-medium mt-3 mb-5">Log In</h1>
         <p className="text-[#8b8b8b] dark:text-[#9e9e9e] mb-6">
