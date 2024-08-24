@@ -181,11 +181,7 @@ const DashboardPage = () => {
               {teacher.levels.map((level, index) => (
                 <li
                   key={index}
-                  className={`py-2 px-3 rounded-3xl font-medium ${
-                    index === 0
-                      ? "bg-[#9FB7CE] dark:bg-[#3A5068]"
-                      : "bg-[#F8F8F8] dark:bg-[#2A2A2A]"
-                  }`}
+                  className="py-2 px-3 rounded-3xl font-medium bg-[#F8F8F8] dark:bg-[#2A2A2A]"
                 >
                   {level}
                 </li>
