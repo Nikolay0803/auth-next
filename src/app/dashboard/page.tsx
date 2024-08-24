@@ -1,23 +1,44 @@
 "use client";
 
 import React, { useState } from "react";
-import { teachers } from "@/lib/teachers-info-data";
+import { teachers, Teacher } from "@/lib/teachers-info-data";
 import Image from "next/image";
 import ListBox from "@/components/ListBox";
 import Star from "@/assets/star.svg?react";
 import Book from "@/assets/book.svg?react";
 import Heart from "@/assets/heart.svg?react";
-import { languages, level, price } from "@/app/dashboard/user/teachers-data/teachers-data"; 
-
+import Modal from "@/components/BookingModal";
+import {
+  languages,
+  level,
+  price,
+} from "@/app/dashboard/user/teachers-data/teachers-data";
 
 const DashboardPage = () => {
   const [favorites, setFavorites] = useState<Record<number, boolean>>({});
+  const [showReviews, setShowReviews] = useState<Record<number, boolean>>({});
+  const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
 
   const handleFavorite = (index: number) => {
     setFavorites((prevFavorites) => ({
       ...prevFavorites,
       [index]: !prevFavorites[index],
     }));
+  };
+
+  const handleReadMore = (index: number) => {
+    setShowReviews((prevShowReviews) => ({
+      ...prevShowReviews,
+      [index]: true,
+    }));
+  };
+
+  const openModal = (teacher: Teacher) => {
+    setSelectedTeacher(teacher);
+  };
+
+  const closeModal = () => {
+    setSelectedTeacher(null);
   };
 
   return (
@@ -112,9 +133,50 @@ const DashboardPage = () => {
                 </span>
               </li>
             </ul>
-            <button className="text-[#121417] dark:text-[#E4E4E4] font-medium underline mb-10">
-              Read more
-            </button>
+            {!showReviews[index] && (
+              <button
+                onClick={() => handleReadMore(index)}
+                className="text-[#121417] dark:text-[#E4E4E4] font-medium underline mb-10"
+              >
+                Read more
+              </button>
+            )}
+
+            {showReviews[index] &&
+              teacher.reviews &&
+              teacher.reviews.length > 0 && (
+                <ul className="flex flex-col gap-8 mb-8 mt-4">
+                  {teacher.reviews.map((review, reviewIndex) => (
+                    <li key={reviewIndex} className="flex flex-col gap-3">
+                      <div className="flex gap-3">
+                        <div className="w-11 h-11">
+                          <Image
+                            src={review.photo}
+                            alt={review.name}
+                            width={44}
+                            height={44}
+                          />
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-[#8A8A89] dark:text-[#CCCCCC]">
+                            {review.name}
+                          </h4>
+                          <div className="flex gap-2 items-center">
+                            <Star className="w-4 h-4 fill-[#FFC531]" />
+                            <span className="text-[#121417] dark:text-[#E4E4E4] font-medium">
+                              {review.rating.toFixed(1)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-[#121417] dark:text-[#E4E4E4] font-medium">
+                        {review.text}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
             <ul className="flex gap-2">
               {teacher.levels.map((level, index) => (
                 <li
@@ -129,9 +191,21 @@ const DashboardPage = () => {
                 </li>
               ))}
             </ul>
+            {showReviews[index] && (
+              <button
+                onClick={() => openModal(teacher)}
+                className="mt-8 py-4 px-[48px] text-lg font-bold bg-[#9FB7CE] dark:bg-[#3A5068] text-[#121417] dark:text-[#E4E4E4] rounded-xl"
+              >
+                Book trial lesson
+              </button>
+            )}
           </div>
         </div>
       ))}
+
+      {selectedTeacher && (
+        <Modal teacher={selectedTeacher} onClose={closeModal} />
+      )}
     </div>
   );
 };

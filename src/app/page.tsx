@@ -20,7 +20,7 @@ export default function Home() {
             highly qualified and experienced tutors.
           </p>
           <Link
-            className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] dark:bg-[#3A5068] text-white rounded-xl"
+            className="py-4 px-[88px] text-lg font-bold bg-[#9FB7CE] dark:bg-[#3A5068] text-[#121417] dark:text-[#E4E4E4] rounded-xl"
             href={"/dashboard"}
           >
             Get started

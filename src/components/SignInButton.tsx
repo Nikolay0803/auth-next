@@ -1,12 +1,9 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import log from "@/assets/log-in-01.png";
 import Login from "@/assets/login.svg?react";
-import person from "@/assets/person.png";
 import Person from "@/assets/person.svg?react";
 import SignOut from "./SignOut";
 
