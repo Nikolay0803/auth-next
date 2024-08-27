@@ -66,7 +66,7 @@ export default function SignIn() {
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {emailError && <p className="text-red-500 mb-4">{emailError}</p>}
         <form
-          className="p-2 flex flex-col gap-[18px] mb-10"
+          className="p-2 flex flex-col gap-[18px] mb-4"
           onSubmit={handleSubmit}
         >
           <InputBox
@@ -87,6 +87,15 @@ export default function SignIn() {
             Sign In
           </button>
         </form>
+        <Link
+          className="text-[#8b8b8b] dark:text-[#9e9e9e] mb-6"
+          href={"/signup"}
+        >
+          Don&apos;t have an account{" "}
+          <span className="text-[#9FB7CE] dark:text-[#3A5068] underline">
+            Register
+          </span>
+        </Link>
       </div>
     </div>
   );
