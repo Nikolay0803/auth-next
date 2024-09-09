@@ -43,48 +43,48 @@ const DashboardPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 pb-[60px] sm:px-6 lg:px-8">
-      <div className="flex gap-5 mb-8">
+      <div className="flex flex-col sm:flex-row gap-5 mb-8">
         <ListBox
           label="Languages"
           placeholder="Languages"
           options={languages}
-          className="w-[221px]"
+          className="w-full sm:w-[221px]"
         />
         <ListBox
           label="Level of knowledge"
           placeholder="Level"
           options={level}
-          className="w-[198px]"
+          className="w-full sm:w-[198px]"
         />
         <ListBox
           label="Price"
           placeholder="Price"
           options={price}
-          className="w-[124px]"
+          className="w-full sm:w-[124px]"
         />
       </div>
       {teachers.map((teacher, index) => (
         <div
           key={index}
-          className="bg-white dark:bg-[#313131] p-6 rounded-3xl flex gap-12 mb-8"
+          className="bg-white dark:bg-[#313131] p-4 sm:p-6 rounded-3xl flex flex-col sm:flex-row gap-6 mb-8"
         >
-          <div className="w-[120px] h-[120px]">
-            <Image src={teacher.avatar} alt="avatar" />
+          <div className="w-[120px] h-[120px] mx-auto sm:mx-0">
+            <Image src={teacher.avatar} alt="avatar" width={120} height={120} />
           </div>
-          <div>
-            <div className="flex gap-[149px] mb-2">
+          <div className="flex-1">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-[149px] mb-4">
               <p className="text-[#8A8A89] dark:text-[#CCCCCC]">Languages</p>
-              <ul className="flex gap-4 font-medium whitespace-nowrap">
-                <li className="flex items-center gap-2 border-r border-gray-300 dark:border-gray-600">
+              <ul className="flex flex-wrap gap-4 font-medium">
+                <li className="flex items-center gap-2 border-b sm:border-none sm:border-r border-gray-300 dark:border-gray-600">
                   <Book />
                   <p className="pr-4 dark:text-[#E4E4E4]">Lessons online</p>
                 </li>
-                <li className="flex items-center gap-2 border-r border-gray-300 dark:border-gray-600">
+                <li className="flex items-center gap-2 border-b sm:border-none sm:border-r border-gray-300 dark:border-gray-600">
                   <p className="pr-4 dark:text-[#E4E4E4]">
                     Lessons done: {teacher.lessonsDone}
                   </p>
                 </li>
-                <li className="flex items-center gap-2 border-r border-gray-300 dark:border-gray-600">
+                <li className="flex items-center gap-2 border-b sm:border-none sm:border-r border-gray-300 dark:border-gray-600">
                   <Star className="w-5 h-5 fill-[#FFC531]" />
                   <p className="pr-4 dark:text-[#E4E4E4]">
                     Rating: {teacher.rating}
@@ -99,7 +99,7 @@ const DashboardPage = () => {
               </ul>
               <button
                 onClick={() => handleFavorite(index)}
-                className="h-[26px] w-[26px]"
+                className="h-[26px] w-[26px] self-center"
               >
                 <Heart
                   className={`${
@@ -110,7 +110,7 @@ const DashboardPage = () => {
                 />
               </button>
             </div>
-            <h2 className="text-2xl font-medium mb-8 text-[#121417] dark:text-[#E4E4E4]">
+            <h2 className="text-xl sm:text-2xl font-medium mb-4 text-[#121417] dark:text-[#E4E4E4]">
               {teacher.name}
             </h2>
             <ul className="flex flex-col gap-2 mb-4">
@@ -136,7 +136,7 @@ const DashboardPage = () => {
             {!showReviews[index] && (
               <button
                 onClick={() => handleReadMore(index)}
-                className="text-[#121417] dark:text-[#E4E4E4] font-medium underline mb-10"
+                className="text-[#121417] dark:text-[#E4E4E4] font-medium underline mb-4"
               >
                 Read more
               </button>
@@ -145,7 +145,7 @@ const DashboardPage = () => {
             {showReviews[index] &&
               teacher.reviews &&
               teacher.reviews.length > 0 && (
-                <ul className="flex flex-col gap-8 mb-8 mt-4">
+                <ul className="flex flex-col gap-6 mb-8 mt-4">
                   {teacher.reviews.map((review, reviewIndex) => (
                     <li key={reviewIndex} className="flex flex-col gap-3">
                       <div className="flex gap-3">
@@ -177,11 +177,11 @@ const DashboardPage = () => {
                 </ul>
               )}
 
-            <ul className="flex gap-2">
+            <ul className="flex flex-wrap gap-2">
               {teacher.levels.map((level, index) => (
                 <li
                   key={index}
-                  className="py-2 px-3 rounded-3xl font-medium bg-[#F8F8F8] dark:bg-[#2A2A2A]"
+                  className="py-1 px-2 rounded-3xl font-medium bg-[#F8F8F8] dark:bg-[#2A2A2A]"
                 >
                   {level}
                 </li>
@@ -190,7 +190,7 @@ const DashboardPage = () => {
             {showReviews[index] && (
               <button
                 onClick={() => openModal(teacher)}
-                className="mt-8 py-4 px-[48px] text-lg font-bold bg-[#9FB7CE] dark:bg-[#3A5068] text-[#121417] dark:text-[#E4E4E4] rounded-xl"
+                className="mt-6 py-2 px-4 text-lg font-bold bg-[#9FB7CE] dark:bg-[#3A5068] text-[#121417] dark:text-[#E4E4E4] rounded-xl"
               >
                 Book trial lesson
               </button>
