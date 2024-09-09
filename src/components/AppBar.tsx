@@ -11,7 +11,7 @@ const AppBar = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
-    <header className="flex flex-col sm:flex-row items-center mb-5 px-4 sm:px-[128px] py-5 relative">
+    <header className="flex flex-col sm:flex-row mb-5 px-4 sm:px-[128px] py-5 relative">
       <Link
         className="flex-1 flex items-center justify-between sm:justify-center mb-4 sm:mb-0"
         href={"/"}
