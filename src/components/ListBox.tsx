@@ -90,7 +90,7 @@ const ListBox: FC<ListBoxProps> = ({
                 leaveFrom="transform scale-100 opacity-100"
                 leaveTo="transform scale-95 opacity-0"
               >
-                <ListboxOptions className="absolute mt-1 w-full py-1 bg-white dark:bg-[#313131]  border border-gray-300 dark:border-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-gray-600">
+                <ListboxOptions className="absolute mt-1 w-full py-1 bg-white dark:bg-[#313131]  border border-gray-300 dark:border-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-gray-600 z-40">
                   {options.map((option) => (
                     <ListboxOption key={option.key} value={option}>
                       {({ active, selected }) => (

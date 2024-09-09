@@ -40,11 +40,11 @@ const AppBar = () => {
       </Link>
 
       {menuOpen && (
-        <nav className="sm:hidden absolute top-full left-0 w-full max-h-[calc(100vh-60px)] overflow-y-auto bg-gray-800 dark:bg-gray-900 shadow-md z-10">
+        <nav className="sm:hidden fixed top-0 left-0 w-screen h-screen bg-[#F8F8F8] text-[#121417] dark:bg-[#1A1A1A] dark:text-[#E4E4E4] shadow-md z-50">
           <ul className="flex flex-col items-center py-4 space-y-2">
             <li>
               <Link
-                className="block px-4 py-2 text-center text-lg font-medium text-white hover:text-[#9FB7CE]"
+                className="block px-4 py-2 text-center text-lg font-medium hover:text-[#9FB7CE]"
                 href={"/"}
                 onClick={() => setMenuOpen(false)}
               >
@@ -53,7 +53,7 @@ const AppBar = () => {
             </li>
             <li>
               <Link
-                className="block px-4 py-2 text-center text-lg font-medium text-white hover:text-[#9FB7CE]"
+                className="block px-4 py-2 text-center text-lg font-medium hover:text-[#9FB7CE]"
                 href={"/dashboard"}
                 onClick={() => setMenuOpen(false)}
               >
