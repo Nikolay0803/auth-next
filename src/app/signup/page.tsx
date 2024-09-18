@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import InputBox from "@/components/InputBox";
-import { Backend_URL } from "@/lib/Constants";;
+import { Backend_URL } from "@/lib/Constants";
 import Link from "next/link";
 import Close from "@/assets/close.svg?react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-
+import Loader from "@/components/Loader";
 type FormInputs = {
   name: string;
   email: string;
@@ -24,6 +24,7 @@ const SignupPage = () => {
   const [errors, setErrors] = useState<
     Partial<Record<keyof FormInputs, string>>
   >({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -55,6 +56,8 @@ const SignupPage = () => {
       return;
     }
 
+    setLoading(true);
+
     try {
       const res = await fetch(Backend_URL + "/auth/register", {
         method: "POST",
@@ -67,6 +70,7 @@ const SignupPage = () => {
       if (!res.ok) {
         const errorText = await res.text();
         toast.error(`Error: ${errorText}`);
+        setLoading(false);
         return;
       }
 
@@ -78,11 +82,14 @@ const SignupPage = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
       toast.error("Failed to register. Please try again.");
+    } finally {
+      setLoading(false); 
     }
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-70 backdrop-blur-sm">
+      {loading && <Loader />}
       <div className="relative max-w-[566px] bg-white rounded-[30px] p-[64px] dark:bg-[#1F1F1F]">
         <Link className="absolute top-4 right-4 w-8 h-8" href={"/"}>
           <Close />
@@ -93,7 +100,7 @@ const SignupPage = () => {
         <p className="text-[#8b8b8b] dark:text-gray-400 mb-10">
           Thank you for your interest in our platform! In order to register, we
           need some information. Please provide us with the following
-          information
+          information.
         </p>
         <form
           className="p-2 flex flex-col gap-[18px] mb-10"

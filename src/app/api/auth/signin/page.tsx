@@ -6,12 +6,14 @@ import InputBox from "@/components/InputBox";
 import Link from "next/link";
 import Close from "@/assets/close.svg?react";
 import { toast } from "react-toastify";
+import Loader from "@/components/Loader";
 
 export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const validateEmail = (email: string) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,9 +24,11 @@ export default function SignIn() {
     e.preventDefault();
     setError(null);
     setEmailError(null);
+    setLoading(true);
 
     if (!validateEmail(username)) {
       setEmailError("Invalid email format");
+      setLoading(false);
       return;
     }
 
@@ -34,6 +38,8 @@ export default function SignIn() {
       password,
       callbackUrl: "/dashboard",
     });
+
+    setLoading(false);
 
     if (result?.error) {
       switch (result.error) {
@@ -54,6 +60,7 @@ export default function SignIn() {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 dark:bg-black dark:bg-opacity-70 backdrop-blur-sm">
+      {loading && <Loader />}
       <div className="relative max-w-[566px] bg-white text-[#121417] dark:bg-[#1F1F1F] dark:text-white rounded-[30px] p-[64px]">
         <Link className="absolute top-4 right-4 w-8 h-8" href={"/"}>
           <Close />
